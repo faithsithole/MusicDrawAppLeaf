@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Simple Drawing Socket</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="fontAwesome/css/font-awesome.css">
+		<link rel="stylesheet" href="buttons/css/buttons.css">
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="imagewrap">
+				<div id="savedImage">
+					<img src="">
+				</div>
+			</div>
+
+				<div class="controls">	
+					<div id ="songTitles">
+						<h3></h3>
+					</div>
+
+					<div class="playcontrols">
+						<a href="#" id="backward" class="fa fa-step-backward fa-3x"></a>
+						<a href="#" id="play" class="fa fa-play fa-4x"></a> 
+						<a href="#" id="forward" class="fa fa-step-forward fa-3x"></a>
+						<a href="#" id ="save" class="fa fa-floppy-o fa-3x"></a>
+						<a href="#" id="new" class="fa fa-file fa-3x"></a>
+					</div>
+
+					<div class="brushes">
+					<img id="regular" src="assets/brushP.png">
+					<img id="grass" src="assets/grassP.png">
+					<img id="leaf" src="assets/leafP.png">
+					</div>
+
+					<a href="#" id="button-1" class="button button-black button-circle"></a>
+					<a href="#" id="button-2" class="button button-white button-circle"></a>
+				</div>
+
+				<script language="javascript" src="js/p5.js"></script>
+				<script type="text/javascript" src="buttons/js/buttons.js"></script>
+				<!-- // <script src="/socket.io/socket.io.js"></script> -->
+				<script language="javascript" src="js/p5.sound.js"></script>
+				<script language="javascript" src="js/p5.play.js"></script>
+				<script src="js/disable-right-click.js"></script>
+				<script src="js/marker.js"></script>
+				<script src="js/sketch.js"></script>
+		</div>
+	</body>
+</html>

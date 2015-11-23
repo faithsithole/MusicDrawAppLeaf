@@ -1,0 +1,93 @@
+/* FULL SCREEN STUFF */
+
+body, html {
+	width: 100%;
+	height: 100%;
+	background-color: #4d1600;
+}
+
+html, canvas {
+	padding: 0; 
+	margin-left: 5.5%;
+	overflow: hidden;
+}
+
+
+/* COLOR PALETTE DRAWER */
+
+.controls {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(-50%);
+	width: 60%;
+	background-color: #4d4900;
+	padding: 20px;
+	text-align: right;	
+	border-radius: 20px 20px 0 0;
+	/* Stop user from selecting text in buttons*/
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.playcontrols {
+	position: absolute;
+	padding: 20px;
+	bottom: 5%;
+	text-align: center;
+}
+
+.brushes {
+	position: absolute;
+	padding-bottom: 50px;
+	right: 25%;
+	text-align: center;
+}
+
+#wrap .button {	
+	width: 100px;
+    height: 100px;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+/* visited link */
+a:visited {
+    color: black;
+}
+
+#imagewrap {
+	position: absolute;
+	left:0;
+}
+
+#savedImage {
+	padding:2%;
+}
+
+img {
+	width: 120px;
+	height: 100px;
+	cursor: pointer;
+}
+
+#savedImage img {
+	width: 200px;
+	height: 100px;
+	border: solid 5px #4d4900;
+	display: inline-block;
+}
+
+.fa {
+	padding: 10px;
+}
+
+#songTitles {
+	float: left;
+}
