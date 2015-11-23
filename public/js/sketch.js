@@ -67,7 +67,7 @@ function preload() {
 	// It is convention to keep your assets (images, sounds, etc.) in assets/
 	ndakuvara = loadSound("assets/Ndakuvara.m4a");
 	okay = loadSound("https://api.soundcloud.com/tracks/25103033/stream?client_id=97e98adf0edbf76a78de7f80212a88da");
-	headlights = loadSound("https://api.soundcloud.com/tracks/179438798/stream?client_id=97e98adf0edbf76a78de7f80212a88da");
+	// headlights = loadSound("https://api.soundcloud.com/tracks/179438798/stream?client_id=97e98adf0edbf76a78de7f80212a88da");
 	electricity = loadSound("https://api.soundcloud.com/tracks/169938061/stream?client_id=97e98adf0edbf76a78de7f80212a88da");
 	midnight = loadSound("https://api.soundcloud.com/tracks/19087066/stream?client_id=97e98adf0edbf76a78de7f80212a88da");
 
@@ -83,7 +83,7 @@ function preload() {
 
 
 	// arraySongs for drawing
-	 arraySongs = [headlights, ndakuvara, electricity, midnight, okay];
+	 arraySongs = [electricity, ndakuvara, midnight, okay];
 
 	// Don't leave this function empty!
 	// If you leave it empty, your sketch may never load.  If you don't need
