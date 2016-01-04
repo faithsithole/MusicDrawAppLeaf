@@ -1,11 +1,5 @@
 /*
-
 	Client-side Drawing Board
-
-	p5 Hints
-	========
-	mouseIsPressed, mouseButton, LEFT, RIGHT
-	http://p5js.org/reference/#/p5/mouseButton
 */
 var palette;
 var newMarker;
@@ -17,25 +11,14 @@ var to;
 var songIndex = 0;
 var num;
 var myCanvas;
-
-// my colour palette with the values of the colours that will display on the page
-palette = [
-	{h: 211, s: 24, b: 44, a: 0.5},
-	{h: 176, s: 62, b: 80, a: 0.5},
-	{h: 45, s: 68, b: 99, a: 0.5},
-	{h: 0, s: 58, b: 100, a: 0.5},
-	{h: 354, s: 61, b: 77, a: 0.5}
-	];
-
+var myBrush;
 
 // buttons
 var buttBlack = document.getElementById("button-1");
 var buttwhite = document.getElementById("button-2");
 var newCanvas = document.getElementById("new");
-var songNum = document.getElementById("songTitles");
 
 // brushes
-var regBrush = document.getElementById("regular");
 var grassBrush = document.getElementById("grass");
 var leafBrush = document.getElementById("leaf");
 
@@ -51,70 +34,57 @@ imagewrapDiv.removeChild(imageDiv);
 //  MUSIC SETUP
 var song; 
 var myImageDraw;
-var myImage1;
-var myImage2;
-var myImage3
-var myMask1;
-var myMask2;
-var myMask3;
+var myImageGrass;
+var myImageLeaf;
+var myMaskGrass;
+var myMaskLeaf;
 var arraySongs;
 // This needs to be global so we can access it from preload, setup & draw
 
 
 // preload() runs before anything else
 function preload() {
-
 	// It is convention to keep your assets (images, sounds, etc.) in assets/
 	ndakuvara = loadSound("assets/Ndakuvara.m4a");
-	okay = loadSound("https://api.soundcloud.com/tracks/25103033/stream?client_id=97e98adf0edbf76a78de7f80212a88da");
-	// headlights = loadSound("https://api.soundcloud.com/tracks/179438798/stream?client_id=97e98adf0edbf76a78de7f80212a88da");
+	headlights = loadSound("https://api.soundcloud.com/tracks/179438798/stream?client_id=97e98adf0edbf76a78de7f80212a88da");
 	electricity = loadSound("https://api.soundcloud.com/tracks/169938061/stream?client_id=97e98adf0edbf76a78de7f80212a88da");
-	midnight = loadSound("https://api.soundcloud.com/tracks/19087066/stream?client_id=97e98adf0edbf76a78de7f80212a88da");
 
 	//images
-	myImage1 = loadImage("assets/imageJ.jpg");
-	myMask1 = loadImage("assets/image.png");
+	myImageGrass = loadImage("assets/grass.jpg");
+	myMaskGrass = loadImage("assets/grassP.png");
 
-	myImage2 = loadImage("assets/grass.jpg");
-	myMask2 = loadImage("assets/grassP.png");
-
-	myImage3 = loadImage("assets/leaf.jpg");
-	myMask3 = loadImage("assets/leafP.png");
-
+	myImageLeaf = loadImage("assets/leaf.jpg");
+	myMaskLeaf = loadImage("assets/leafP.png");
 
 	// arraySongs for drawing
-	 arraySongs = [electricity, ndakuvara, midnight, okay];
-
-	// Don't leave this function empty!
-	// If you leave it empty, your sketch may never load.  If you don't need
-	// preload for your sketch, go ahead and delete the function.
+	 arraySongs = [electricity, headlights, ndakuvara];
 }
 
-
-
 function setup() {
-
-	myImage3.mask(myMask3);
-	// from = color(354, 61, 77, 0.5 );
-	// to = color(45, 68, 99, 0.5);
+	myImageLeaf.mask(myMaskLeaf);
+	myImageGrass.mask(myMaskGrass);
 
 	// set up background colour using hsb
 	myCanvas = createCanvas(windowWidth, windowHeight);
 	var backColour = {
-		h: 360,
-		s: 360,
-		b: 360
+		h: 0,
+		s: 0,
+		b: 0
 	};
 	background(backColour.h, backColour.s, backColour.b);
 	colorMode(HSB, 360, 100, 100, 1);
 	strokeCap(ROUND);
 
+// brush colour ranges
 	from = color(45, 68, 99, 0.5);
 	to = color( 211, 24, 44, 0.5);
 
 	var randHue = random(0, 360);
 	newMarker = new Marker(from, 30);
 	eraser = new Marker(backColour, 30);
+
+// initial brush
+	myBrush = myImageGrass;
 
 
 // my events on click
@@ -131,7 +101,7 @@ function setup() {
 
 	newCanvas.onclick = function (event) {
 		event.preventDefault();
-		background(360);
+		background(0);
 	}
 
 	playSong.onclick = function (event) {
@@ -184,6 +154,15 @@ function setup() {
 		save(myCanvas, 'myCanvas.jpg');
 	}
 
+	leafBrush.onclick = function (event) {
+		event.preventDefault();
+		myBrush = myImageLeaf;
+	}
+
+	grassBrush.onclick = function (event) {
+		event.preventDefault();
+		myBrush = myImageGrass;
+	}
 }
 
 function draw() {
@@ -196,10 +175,7 @@ function draw() {
 
 	if (mouseIsPressed) {
 		if(mouseButton === LEFT) {
-			newMarker.draw(myImage3, size, size, from, to, songLevel*2, size*0.25);
+			newMarker.draw(myBrush, size, size, from, to, songLevel*2, size*0.25);
 		}
-		// else if(mouseButton === RIGHT) {
-		// 	eraser.drawLine(p1, p2);
-		// }
 	}
 }
