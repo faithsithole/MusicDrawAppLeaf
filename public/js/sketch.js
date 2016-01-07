@@ -57,7 +57,7 @@ function preload() {
 	myMaskLeaf = loadImage("assets/leafP.png");
 
 	// arraySongs for drawing
-	 arraySongs = [electricity, headlights, ndakuvara];
+	 arraySongs = [ndakuvara, electricity, headlights];
 }
 
 function setup() {
@@ -67,9 +67,9 @@ function setup() {
 	// set up background colour using hsb
 	myCanvas = createCanvas(windowWidth, windowHeight);
 	var backColour = {
-		h: 0,
-		s: 0,
-		b: 0
+		h: 360,
+		s: 360,
+		b: 360
 	};
 	background(backColour.h, backColour.s, backColour.b);
 	colorMode(HSB, 360, 100, 100, 1);
@@ -101,7 +101,7 @@ function setup() {
 
 	newCanvas.onclick = function (event) {
 		event.preventDefault();
-		background(0);
+		background(360);
 	}
 
 	playSong.onclick = function (event) {
@@ -151,7 +151,7 @@ function setup() {
 		var savedImage = imageClone.firstElementChild;
 		savedImage.setAttribute("src", imageUrl);
 		imagewrapDiv.appendChild(imageClone);
-		save(myCanvas, 'myCanvas.jpg');
+		// save(myCanvas, 'myCanvas.jpg');
 	}
 
 	leafBrush.onclick = function (event) {
